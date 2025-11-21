@@ -1,4 +1,5 @@
 import Spline from '@splinetool/react-spline';
+import { motion } from 'framer-motion'
 
 export default function Hero() {
   return (
@@ -11,7 +12,7 @@ export default function Hero() {
 
       <div className="relative mx-auto max-w-7xl px-6 pt-16 pb-24 lg:pt-24 lg:pb-28">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
-          <div>
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6 }}>
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-white/15 px-3 py-1 text-xs text-white/80 mb-5">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Live voice agent • <span className="text-white/70">beta</span>
@@ -33,13 +34,16 @@ export default function Hero() {
               <span className="h-1 w-1 rounded-full bg-slate-400" />
               <span>99.95% uptime</span>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="relative h-[420px] sm:h-[520px] lg:h-[560px]">
+          <motion.div className="relative h-[420px] sm:h-[520px] lg:h-[560px]" initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.1 }}>
             <div className="absolute inset-0 rounded-3xl ring-1 ring-white/10 bg-white/5 backdrop-blur-sm overflow-hidden">
               <Spline scene="https://prod.spline.design/4cHQr84zOGAHOehh/scene.splinecode" style={{ width: '100%', height: '100%' }} />
             </div>
-          </div>
+            <div className="pointer-events-none absolute -inset-1 rounded-[28px]" style={{
+              background: 'radial-gradient(1000px 200px at 50% 0%, rgba(124,58,237,0.15), rgba(59,130,246,0.08), transparent)'
+            }} />
+          </motion.div>
         </div>
       </div>
     </section>

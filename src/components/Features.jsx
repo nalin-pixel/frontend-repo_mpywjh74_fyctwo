@@ -1,4 +1,5 @@
 import { Mic, Zap, ShieldCheck, Globe } from 'lucide-react';
+import { motion } from 'framer-motion'
 
 const features = [
   {
@@ -37,14 +38,24 @@ export default function Features() {
           A minimal, futuristic voice agent that plugs into your stack and gets results.
         </p>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {features.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="group rounded-2xl bg-white/[0.04] ring-1 ring-white/10 p-6 hover:bg-white/[0.06] transition">
-              <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-amber-400 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+          {features.map(({ icon: Icon, title, desc }, i) => (
+            <motion.div
+              key={title}
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="group relative rounded-2xl bg-white/[0.04] ring-1 ring-white/10 p-6 hover:bg-white/[0.06] transition"
+            >
+              <div className="absolute inset-px rounded-[14px] pointer-events-none" style={{
+                background: 'linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0))'
+              }} />
+              <div className="relative h-10 w-10 rounded-xl bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-amber-400 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
                 <Icon size={20} />
               </div>
-              <h3 className="mt-4 text-white font-medium text-lg">{title}</h3>
-              <p className="mt-2 text-slate-300 text-sm leading-relaxed">{desc}</p>
-            </div>
+              <h3 className="relative mt-4 text-white font-medium text-lg">{title}</h3>
+              <p className="relative mt-2 text-slate-300 text-sm leading-relaxed">{desc}</p>
+            </motion.div>
           ))}
         </div>
       </div>

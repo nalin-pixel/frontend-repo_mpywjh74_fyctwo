@@ -1,6 +1,10 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Marquee from './components/Marquee'
 import Features from './components/Features'
+import How from './components/How'
+import Pricing from './components/Pricing'
+import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 
 function App() {
@@ -16,7 +20,11 @@ function App() {
       <div className="relative">
         <Navbar />
         <Hero />
+        <Marquee />
         <Features />
+        <How />
+        <Pricing />
+        <FAQ />
         <Footer />
       </div>
     </div>
